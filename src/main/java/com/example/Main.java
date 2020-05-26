@@ -41,6 +41,9 @@ public class Main {
   @Value("${spring.datasource.url}")
   private String dbUrl;
 
+  @Value("${app.user}")
+  private String user;
+
   @Autowired
   private DataSource dataSource;
 
@@ -72,6 +75,12 @@ public class Main {
       model.put("message", e.getMessage());
       return "error";
     }
+  }
+
+  @RequestMapping("/test")
+  String test(Map<String, Object> model) {
+    model.put("user", user);
+    return "test";
   }
 
   @Bean
