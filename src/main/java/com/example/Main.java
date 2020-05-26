@@ -41,8 +41,8 @@ public class Main {
   @Value("${spring.datasource.url}")
   private String dbUrl;
 
-  @Value("${app.user}")
-  private String user;
+  @Value("${golang.path}")
+  private String path;
 
   @Autowired
   private DataSource dataSource;
@@ -79,7 +79,7 @@ public class Main {
 
   @RequestMapping("/test")
   String test(Map<String, Object> model) {
-    model.put("user", user);
+    model.put("path", path);
     return "test";
   }
 
